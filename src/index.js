@@ -1,26 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-
-const styles = {
-    backgroundColor: 'blue',
-    color: 'white'
-};
+import OtherComponent from './OtherComponent'
 
 // Los nombres de componentes deben comenzar con Mayusculas!
-function OtherComponent() {
-    return <div>
-                <br/>
-                <label class="label" for="txtName">Enter Name: </label>
-                <input id="txtName" type="text"/>
-                <button style={styles}>Submit</button>
-           </div>
+function Saludo() {
+    return <p>Hello World from home, <Name/></p>;
 }
 
-function App() {
-    return <div>Hello Word from Home, Lautaro!<br/><OtherComponent /></div>;
-}
+const Name = () => {    
+    const [name, setNombre] = useState('Lautaro'); //equivalente a las propiedades Get y Set
+    
+    const updateName = () => {
+        let txtnombre = document.getElementById("txtName").value;
+        
+        if (!txtnombre == '') 
+            setNombre(txtnombre);
+    }  
 
-ReactDOM.render(<App />, document.getElementById("root"));
+    return (    //actualiza todo lo que esta despues de <Name/> pero no lo anterior
+        <span>
+            <span><strong>{name}!!</strong></span>                
+            <OtherComponent funcion={updateName}/>
+        </span>
+    );
+};
+
+const App = () => {    
+    return (
+        <div>
+            <Saludo/>
+        </div>
+    );
+};
+
+ReactDOM.render(<App/>, document.getElementById("root"));
+            // (componente a mostrar , donde se muestra)
+
+//root es un 'id' de un <div> q esta en public\index.html
+//npm start ,ctrl C
+//dato curioso: si este archivo se llamara Index.js en lugar de index.js no compilaria
 
 
 
@@ -43,7 +61,3 @@ const App = () => {
 }
 
 ReactDOM.render(<App />, document.getElementById("root")); */
-
-//root es un 'id' de un <div> q esta public\index.html
-//npm start ,ctrl C
-//dato curioso: si este archivo se llamara Index.js en lugar de index.js no compilaria
