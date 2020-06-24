@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# About the App
+This is my hello world with React. All it does is take a name from the text box and say hi
+
+# To run this App:
+## Download npm dependencies
+At the project root folder run
+```bash
+npm install
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
